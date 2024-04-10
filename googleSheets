@@ -1,0 +1,6 @@
+function onOpen() { //runs when the sheet is opened or refreshed
+  SpreadsheetApp.getUi().createMenu('menuName') //adds a menu to easily run scripts directly from the UI
+    .addItem('Menu item 1', 'functionToCall')
+    .addItem('Menu item 2', 'anotherFunction')
+    .addToUi();
+}
