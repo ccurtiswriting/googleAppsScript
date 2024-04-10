@@ -1,6 +1,29 @@
-function onOpen() { //runs when the sheet is opened or refreshed
-  SpreadsheetApp.getUi().createMenu('menuName') //adds a menu to easily run scripts directly from the UI
-    .addItem('Menu item 1', 'functionToCall')
+function onOpen() {
+/*
+onOpen runs when the sheet is opened or refreshed without needing to set a trigger.
+Adds a menu to easily run scripts directly from the UI.
+*/
+  SpreadsheetApp.getUi().createMenu('menuName') 
+    .addItem('Menu item 1', 'functionToCall') //note: variables cannot be passed into functions when called from the menu.
     .addItem('Menu item 2', 'anotherFunction')
     .addToUi();
 }
+
+function uploadUrl2Id(url) {
+/*
+Converts a url string in a Google Forms response sheet into the Google ID for that file.
+*/
+  let id = url.split('id=')[1];
+  console.info(url, id);
+  return id;
+}
+
+function titleCase(str) {
+/*
+Capitalizes each word in a string. Great for making submitted names consistent.
+*/
+  str = str.trim();
+  return str.toString().split(/\b/).map(function (word) {
+    return word ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : '';
+  }).join('');
+} 
