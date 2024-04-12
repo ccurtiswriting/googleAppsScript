@@ -19,7 +19,10 @@ Converts a url string in a Google Forms response sheet into the Google ID for th
 }
 
 function fieldTrip() {
-  //gets authorized users
+  /*
+  gets authorized users for a folder in Google Drive
+  */
+  let programFolder = DriveApp.getFolderById('folderIdString');
   let permissionSlips = [];
   programFolder.getViewers().forEach(function (viewer) {
     permissionSlips.push(viewer.getEmail());
