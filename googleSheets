@@ -18,6 +18,16 @@ Converts a url string in a Google Forms response sheet into the Google ID for th
   return id;
 }
 
+function fieldTrip() {
+  //gets authorized users
+  let permissionSlips = [];
+  programFolder.getViewers().forEach(function (viewer) {
+    permissionSlips.push(viewer.getEmail());
+  });
+  console.info(permissionSlips);
+  return(permissionSlips);
+}
+
 function titleCase(str) {
 /*
 Capitalizes each word in a string. Great for making submitted names consistent.
