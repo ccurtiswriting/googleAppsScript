@@ -1,0 +1,10 @@
+function fieldTrip() {
+  //gets authorized users for a folder in Google Drive
+  let programFolder = DriveApp.getFolderById('folderIdString');
+  let permissionSlips = [];
+  programFolder.getViewers().forEach(function (viewer) {
+    permissionSlips.push(viewer.getEmail());
+  });
+  console.info(permissionSlips);
+  return(permissionSlips);
+}
