@@ -1,0 +1,7 @@
+function titleCase(str) {
+  //Capitalizes each word in a string. Great for making submitted names consistent.
+  str = str.trim();
+  return str.toString().split(/\b/).map(function (word) {
+    return word ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : '';
+  }).join('');
+}
