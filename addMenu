@@ -1,0 +1,10 @@
+function onOpen() {
+  /*
+  onOpen runs when the sheet is opened or refreshed without needing to set a trigger.
+  Adds a menu to easily run scripts directly from the UI.
+  */
+  SpreadsheetApp.getUi().createMenu('menuName') 
+    .addItem('Menu item 1', 'functionToCall') //note: variables cannot be passed into functions when called from the menu.
+    .addItem('Menu item 2', 'anotherFunction')
+    .addToUi();
+}
