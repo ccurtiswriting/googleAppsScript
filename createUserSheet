@@ -1,0 +1,17 @@
+function onOpen() {
+  //create a new sheet based on a tmeplate for user by name if it doesn't exist, then activate it
+  let userName = Session.getActiveUser().getEmail().split('@')[0].charAt(0).toUpperCase() + Session.getActiveUser().getEmail().split('@')[0].slice(1);
+  let ss = SpreadsheetApp.getActive();
+  let createNew = true;
+  let allSheets = ss.getSheets();
+  allSheets.forEach((sheet) => {
+    if (sheet.getName() == userName) {
+      createNew = false;
+    }
+  });
+  if (createNew == true) {
+    //replace templateSheet with the sheet to copy
+    ss.getSheetByName('templateSheet').copyTo(ss).setName(userName);
+  }
+  ss.getSheetByName(userName).activate();
+}
