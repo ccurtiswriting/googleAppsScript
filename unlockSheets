@@ -1,10 +1,15 @@
 function unlockSheets() {
+  //Removes all sheet-level protections
   SpreadsheetApp.getActive().getProtections(SpreadsheetApp.ProtectionType.SHEET).forEach((protection) => {
     protection.remove();
   });
+
+  //Removes all range-level protections
   SpreadsheetApp.getActive().getProtections(SpreadsheetApp.ProtectionType.RANGE).forEach((protection) => {
     protection.remove();
   });
+  
+  //Adds protection to all header rows
   SpreadsheetApp.getActive().getSheets().forEach((sheet) => {
     sheet.getRange('1:1').protect().setWarningOnly(true);
   });
