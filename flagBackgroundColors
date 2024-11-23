@@ -1,0 +1,21 @@
+function flagBackgroundColors() {
+  const ss = SpreadsheetApp.getActive().getSheetByName('yourTabNameHere');
+  
+  //adds a new column to use for flags
+  let lastCol = ss.getLastColumn();
+  ss.insertColumnAfter(lastCol);
+  const tagCol = (lastCol + 1);
+  ss.setColumnWidth(tagCol, 100);
+  ss.getRange(1, tagCol).setValue('Color found?');
+
+  //gets all background colors and checks all of them for non-white (not #ffffff) colors
+  const bg = ss.getDataRange().getBackgrounds();
+  for (i = 0; i < bg.length; i++) {
+    for (j = 0; j < bg[0].length; j++) {
+      //flags as 'Yes' if non-white color is detected anywhere in the row
+      if (bg[i][j] !== '#ffffff') {
+        ss.getRange((i + 1), tagCol).setValue('Yes');
+      }
+    }
+  }
+}
