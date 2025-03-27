@@ -1,3 +1,6 @@
+/**
+This is good for finding any rows that have a cell that has been filled with a color in it. Especially helpful for large data sets with hundreds of data columns that would be extremely tedious to filter or visually scan for colors.
+*/
 function flagBackgroundColors() {
   const ss = SpreadsheetApp.getActive().getSheetByName('yourTabNameHere');
   
