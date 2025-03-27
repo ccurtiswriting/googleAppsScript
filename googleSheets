@@ -9,17 +9,17 @@ function onOpen() {
     .addToUi();
 }
 
-function uploadUrl2Id(url) {
+function url2Id(url) {
   //Converts a url string in a Google Forms response sheet into the Google ID for that file.
-  let id = url.split('id=')[1];
+  const id = url.split('id=')[1];
   console.info(url, id);
   return id;
 }
 
-function fieldTrip() {
+function getPermissionSlips(folderIdString) {
   //gets authorized users for a folder in Google Drive
-  let programFolder = DriveApp.getFolderById('folderIdString');
-  let permissionSlips = [];
+  const programFolder = DriveApp.getFolderById(folderIdString);
+  const permissionSlips = [];
   programFolder.getViewers().forEach(function (viewer) {
     permissionSlips.push(viewer.getEmail());
   });
@@ -42,10 +42,10 @@ function getStates() {
   return states;
 }
 
-function onOpen() {
-  //create temporary sheet for user by name if it doesn't exist, then go to it
-  let userName = Session.getActiveUser().getEmail().split('@')[0].charAt(0).toUpperCase() + Session.getActiveUser().getEmail().split('@')[0].slice(1);
-  let ss = SpreadsheetApp.getActive();
+function createUserSheet() {
+  //create a copy of a template sheet for user by name if it doesn't exist, then go to it. Set this to trigger on open.
+  const userName = Session.getActiveUser().getEmail().split('@')[0].charAt(0).toUpperCase() + Session.getActiveUser().getEmail().split('@')[0].slice(1);
+  const ss = SpreadsheetApp.getActive();
   let createNew = true;
   let allSheets = ss.getSheets();
   allSheets.forEach(function (sheet) {
@@ -54,7 +54,7 @@ function onOpen() {
     }
   });
   if (createNew == true) {
-    ss.getSheetByName('dashTemplate').copyTo(ss).setName(userName);
+    ss.getSheetByName('nameOfTemplateSheet').copyTo(ss).setName(userName);
   }
   ss.getSheetByName(userName).activate();
 }
