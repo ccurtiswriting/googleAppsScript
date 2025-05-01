@@ -1,0 +1,9 @@
+funtion convertIdToUrl(id) {
+let thisId
+    try {
+      thisId = console.info(DriveApp.getFolderById(id).getUrl());
+    } catch {
+      thisId = console.info(DriveApp.getFolderById(id).getUrl());
+    }
+    return thisId;
+}
