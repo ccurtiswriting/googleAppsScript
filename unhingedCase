@@ -1,0 +1,12 @@
+function unhingedCase(aString) {
+  aString = aString.split('');
+  aString.forEach((a, index) => {
+    if (index % 2 == 0) {
+      aString[index] = aString[index].toLowerCase();
+    } else {
+      aString[index] = aString[index].toUpperCase();
+    }
+  });
+  aString = aString.join('');
+  return (aString)
+}
