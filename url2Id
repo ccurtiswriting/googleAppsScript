@@ -1,6 +1,0 @@
-function url2Id(url) {
-  //Converts a url string in a Google Forms response sheet into the Google ID for that file.
-  const id = url.split('id=')[1];
-  console.info(url, id);
-  return id;
-}

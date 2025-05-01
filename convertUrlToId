@@ -1,0 +1,4 @@
+function convertUrlToId(url) {
+  //Converts a url from Google Drive into the ID for that file or folder
+  return url.match(/[A-z0-9-_]{33}/);
+}
